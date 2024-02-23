@@ -1,4 +1,4 @@
-<nav style="color: #f0f8ff;">
+<nav class="align-nav">
     <button id="step1" class="button" (click)='goToSteps(1)' ariaCurrentWhenActive="page">Step 1</button>
     <button id="step2" class="button" [ngClass]="disableNavigationTwo ? 'custom-cursor': 'allow-cursor'" (click)='goToSteps(2)' ariaCurrentWhenActive="page">Step 2</button>
     <button id="step3"  class="button" [ngClass]="disableNavigationThree ? 'custom-cursor': 'allow-cursor'"  (click)='goToSteps(3)' ariaCurrentWhenActive="page">Step 3</button>
