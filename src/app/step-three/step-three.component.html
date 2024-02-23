@@ -1,0 +1,38 @@
+<h1>Step 3:Summary</h1>
+
+<div>
+    <p>Your Tesla {{selectedCarModel.description}}</p>    
+    <div class="row">
+          <div class="display-align"><h5>{{selectedCarConfig.selConfig.description}}</h5></div>
+          <div><p class="">{{selectedCarConfig.selConfig.price | currency : 'USD'}}</p>  </div> 
+    </div>
+    <div class="row">
+      <div class="display-align">
+      <p class="">Range:{{selectedCarConfig.selConfig.range}} miles -
+            Max speed: {{selectedCarConfig.selConfig.speed}}
+      </p>  </div> 
+    </div>
+    <div class="row">
+          <div class="display-align"> <h5>{{selectedCarModel.selColors.description}}</h5></div>
+          <div><p>{{selectedCarModel.selColors.price | currency : 'USD'}}</p>  </div>      
+    </div>
+    <div class="row" *ngIf="selectedCarConfig.yoke">
+          <div class="display-align"><h5>Yoke steering wheel</h5></div>
+          <div><p>{{1000 | currency : 'USD'}}</p>  </div>        
+        </div>
+        <div class="row" *ngIf="selectedCarConfig.towHitch">
+            <div class="display-align"><h5>Tow Hitch</h5></div>
+            <div><p>{{1000 | currency : 'USD'}}</p>  </div>        
+          </div>
+        <hr>
+        <div class="row">
+            <div class="display-align"><h5>TOTAL COST</h5></div>
+            <div><p>{{totalCost | currency : 'USD'}}</p>  </div>        
+          </div>
+          <hr>
+</div>
+
+
+<div style="width: 100%;">
+      <img [src]="selectedCarModel?.imageUrl" alt="">
+    </div>

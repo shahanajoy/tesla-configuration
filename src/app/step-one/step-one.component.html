@@ -1,0 +1,33 @@
+<div>
+    <h2>Step 1: Choose your Model and Car</h2>
+    Model:
+    <select
+    id="modelSelect"
+    name="modelSelect"
+    [(ngModel)]="carModelColor" (change)="onfilterColorByCode(carModelColor)"
+  >
+    <option value="0" disabled>Choose a Model</option>
+    <option *ngFor="let modelName of modelDto$; let i = index" [ngValue]="modelName">{{ modelName.description }}</option>
+  </select>
+
+
+
+<div *ngIf="showColor">
+    Color:
+    <div>
+      <select
+      id="colorSelect"
+      name="colorSelect"
+      [(ngModel)]="carModelColor.selColors" (change)="onSelectColor(carModelColor.selColors)"
+    >
+      <option  *ngFor="let selColor of colorArray"  [ngValue]="selColor">{{ selColor.description }}</option>
+     
+    </select>
+    </div>
+</div>
+
+<div style="width: 100%;">
+    <img [src]="carModelColor.imageUrl" alt="">
+</div>
+ 
+</div>
