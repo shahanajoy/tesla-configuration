@@ -48,4 +48,8 @@ export class CarDataService {
     this.selectedCarConfig =  value;
  }
 
+ resetCarConfig() {
+  this.selectedCarConfig = new CarConfig();
+}
+
 }

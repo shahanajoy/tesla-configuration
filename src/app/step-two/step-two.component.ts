@@ -28,10 +28,16 @@ export class StepTwoComponent implements  OnDestroy{
   constructor(private _carData:CarDataService,private _car:CarService,private messageService: MessageService) {
     this.selectedCarModel = this._carData.getSelectedCarModel();
     if(this._carData.getSelectedCarConfig()) {
-      const carConfigResp =this._carData.getCarConfigResp()
-      this.formCarConfiguration(carConfigResp);
       const selectedCarConfig = this._carData.getSelectedCarConfig();
-      this.carConfigSelected =selectedCarConfig;
+      if(Object.keys(selectedCarConfig).length != 0) {
+        const carConfigResp =this._carData.getCarConfigResp()
+        this.formCarConfiguration(carConfigResp);
+        this.showRangePriceTag = true;
+        this.carConfigSelected =selectedCarConfig;
+      } else {
+        this.getCarModels();
+      }
+      
     } 
   }
 

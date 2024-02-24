@@ -24,6 +24,8 @@ export class AppComponent {
         this.disableNavigationTwo = false
       } else if(message.text == ComponentActionEnum.NavigateStepThree) {
         this.disableNavigationThree = false
+      } else if(message.text == ComponentActionEnum.DisableNavigation) {
+        this.disableNavigationThree = true;
       }
     })
   }

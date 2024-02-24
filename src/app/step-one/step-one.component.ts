@@ -21,6 +21,7 @@ export class StepOneComponent implements  OnDestroy{
   colorArray:Colors[];
   showColor:boolean=false;
   carModelColor = new CarModel();
+  isBack:boolean = false;
   constructor(private _carData:CarDataService,
     private _car:CarService,private messageService: MessageService){
       if(this._carData.getSelectedCarModel()) {
@@ -29,6 +30,7 @@ export class StepOneComponent implements  OnDestroy{
         const colorArr = this.modelDto$.filter((item) => item.code == this.carModelColor.code);      
         this.colorArray = colorArr[0].colors
         this.showColor =true;
+        this.isBack = true;
       } 
     }
 
@@ -61,8 +63,13 @@ export class StepOneComponent implements  OnDestroy{
     this.carModelColor.selColors = _modelArray.colors[0];
     this.carModelColor.imageUrl = "assets/images/"+_modelArray.code+"/"+_modelArray.colors[0].code+".jpg";
     this._carData.setSelectedCarModel(this.carModelColor);
-    this.messageService.sendMessage(ComponentActionEnum.NavigateStepTwo);
-
+    
+    if(this.isBack) {
+      this._carData.resetCarConfig();
+      this.messageService.sendMessage(ComponentActionEnum.DisableNavigation);
+    } else {
+      this.messageService.sendMessage(ComponentActionEnum.NavigateStepTwo);
+    }
   }
   
   onSelectColor(_colorArray:Colors) {
